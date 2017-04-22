@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour {
 
-	public Helpers.Lanes lane;
+	public Helpers.Colors myColor;
 
-	public Helpers.Lanes myLane()
+	void Start()
 	{
-		return lane;
+		ColorME (myColor);
+
 	}
 
-	public void setMyLane(Helpers.Lanes theLane)
+	void ColorME(Helpers.Colors _color)
 	{
-		lane = theLane;
+		switch (_color) {
+		case Helpers.Colors.cyan:
+			this.GetComponent<Renderer> ().material.color = Color.cyan;
+			break;
+		case Helpers.Colors.purple:
+			this.GetComponent<Renderer> ().material.color = Color.magenta;
+			break;
+		case Helpers.Colors.red:
+			this.GetComponent<Renderer> ().material.color = Color.red;
+			break;
+		case Helpers.Colors.yellow:
+			this.GetComponent<Renderer> ().material.color = Color.yellow;
+			break;
+		}
 	}
 	
 
