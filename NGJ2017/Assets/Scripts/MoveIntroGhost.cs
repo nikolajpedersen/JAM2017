@@ -15,5 +15,14 @@ public class MoveIntroGhost : MonoBehaviour {
 		Vector3 position = this.transform.position;
 		position.x += moveSpeedContinuous;
 		this.transform.position = position;
+
+		if (this.transform.position.x > 6.0f) {
+			Vector3 newPosition = new Vector3(
+				-6.5f,
+				this.transform.position.y,
+				this.transform.position.z
+			);
+			this.transform.position = newPosition;
+		}
 	}
 }
