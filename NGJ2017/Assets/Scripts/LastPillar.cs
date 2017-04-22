@@ -16,11 +16,15 @@ public class LastPillar : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		try{
 		mainMenuBtn = GameObject.Find ("Main Menu");
 		mainMenuBtn.SetActive (false);
 
 		retryBtn = GameObject.Find ("Retry");
 		retryBtn.SetActive (false);
+		}
+		catch{
+		}
 
 		gameSettings = GameObject.Find ("Level").GetComponent<GameSettings> ();
 

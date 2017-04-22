@@ -15,11 +15,11 @@ public class Obstacle : MonoBehaviour {
 	void ColorME(Helpers.Colors _color)
 	{
 		switch (_color) {
-		case Helpers.Colors.cyan:
-			this.GetComponent<Renderer> ().material.color = Color.cyan;
+		case Helpers.Colors.green:
+			this.GetComponent<Renderer> ().material.color = Color.green;
 			break;
-		case Helpers.Colors.purple:
-			this.GetComponent<Renderer> ().material.color = Color.magenta;
+		case Helpers.Colors.blue:
+			this.GetComponent<Renderer> ().material.color = Color.blue;
 			break;
 		case Helpers.Colors.red:
 			this.GetComponent<Renderer> ().material.color = Color.red;
