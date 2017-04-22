@@ -15,6 +15,7 @@ public class MovePillars : MonoBehaviour {
 	private GameSettings gameSettings;
 	private Helpers.GameMode gameMode;
 	private bool isPaused;
+	private bool levelOver;
 
 	private static Vector3 direction = new Vector3(0f,-1f,0f);
 	private bool hasTarget = false;
@@ -30,12 +31,13 @@ public class MovePillars : MonoBehaviour {
 	void Update()
 	{
 		isPaused = gameSettings.isPaused;
+		levelOver = gameSettings.levelOver;
 		gameMode = gameSettings.gameMode;
 	}
 
 	void FixedUpdate ()
 	{
-		if (!isPaused) {
+		if (!isPaused && !levelOver) {
 			if (gameMode == Helpers.GameMode.tetris) {
 				_time = _time + Time.deltaTime;
 				if (_time > moveSpeedTetrisTick) {

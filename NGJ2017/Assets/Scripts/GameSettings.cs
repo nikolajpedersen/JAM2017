@@ -6,6 +6,7 @@ public class GameSettings: MonoBehaviour {
 
 	public Helpers.GameMode gameMode;
 	public bool isPaused = false;
+	public bool levelOver = false;
 
 	void Update ()
 	{
