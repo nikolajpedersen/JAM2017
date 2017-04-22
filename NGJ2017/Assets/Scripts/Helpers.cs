@@ -5,4 +5,5 @@ using UnityEngine;
 public class Helpers{
 	public enum Colors { red, cyan, yellow, purple};
 	public enum Lanes { one, two, three, four};
+	public enum GameMode {tetris, robotic, fluid, continous};
 }
