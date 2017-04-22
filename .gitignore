@@ -1,7 +1,25 @@
- NGJ2017/Temp/
- NGJ2017/obj/
- NGJ2017/Build
- NGJ2017/Library/
+$PROJDIR
+
+obj
+Temp
+.suo
+.user
+
+$PROJDIR/Library
+
+cache
+metadata
+ScriptAssemblies
+assetDatabase3
+assetservercachev3
+AssetServerCacheV3
+AssetVersioning.db
+expandedItems
+FailedAssetImports.txt
+guidmapper
+ScriptMapper
+unity default resources
+unity editor resources
 
      # ============ #
      # OS generated #
