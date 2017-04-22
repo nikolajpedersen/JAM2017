@@ -2,15 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Helpers : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class Helpers{
+	public enum Colors { red, cyan, yellow, purple};
+	public enum Lanes { one, two, three, four};
 }
