@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimateArrow : MonoBehaviour {
 
 	public float speed = 10f;
-	public int length = 5;
+	public float length = 5f;
 
 	float x,y = 0f;
 

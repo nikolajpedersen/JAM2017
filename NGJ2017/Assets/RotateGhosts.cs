@@ -13,7 +13,7 @@ public class RotateGhosts : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Quaternion dialRotation = dialObject.transform.rotation;
+		Quaternion dialRotation = dialObject.transform.rotation ;
 		transform.rotation = dialRotation;
 	}
 }

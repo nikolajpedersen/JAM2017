@@ -113,7 +113,7 @@ public class Dial : MonoBehaviour {
 			float dialRotationChange =  screenAreaChange * 180 * rotationSpeed;
 
 			// do rotate
-			transform.Rotate(0,0,dialRotationChange);
+			transform.Rotate(0,0,dialRotationChange * -1f);
 	
 			SetCachePos(posY);
 		} else if (clickStatus == "ended") {
@@ -126,7 +126,7 @@ public class Dial : MonoBehaviour {
 			float dialRotationChange =  screenAreaChange * 180 * rotationSpeed;
 
 			// do rotate
-			transform.Rotate(0,0,dialRotationChange);
+			transform.Rotate(0,0,dialRotationChange * -1f);
 
 			// determine if the wheel should spin after swipe
 			float endPosition = posY;
@@ -194,7 +194,7 @@ public class Dial : MonoBehaviour {
 				// calculate the force applied in this tick FPS independent
 				float dialRotationChange = currentSwipeSpinForce * Time.deltaTime * 180;
 
-				transform.Rotate(0,0,dialRotationChange);
+				transform.Rotate(0,0,dialRotationChange * -1f);
 			}
 		}
 	}

@@ -9,8 +9,11 @@ public class GotItButton : MonoBehaviour {
 	private Button btn;
 	private Color _color;
 
+	private GameObject arrow;
+
 	void Start()
 	{
+		arrow = GameObject.Find ("arrow_yellow");
 		btn = this.GetComponent<Button>();
 		btn.onClick.AddListener(TaskOnClick);
 		level = GameObject.Find ("Level");
@@ -20,6 +23,7 @@ public class GotItButton : MonoBehaviour {
 	{
 		level.GetComponent<GameSettings> ().isPaused = false;
 		transform.parent.gameObject.SetActive (false);
+		arrow.SetActive (false);
 	}
 
 	void Update()

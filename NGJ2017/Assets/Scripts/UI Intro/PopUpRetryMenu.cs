@@ -12,8 +12,8 @@ public class PopUpRetryMenu : MonoBehaviour {
 
 	void Start()
 	{
-		mainMenuBtn = GameObject.Find ("Main Menu");
-		retryBtn = GameObject.Find ("Retry");
+		mainMenuBtn = transform.FindChild ("MainMenu").gameObject;
+		retryBtn = transform.FindChild ("Retry").gameObject;
 		gameSettings = GameObject.Find ("Level").GetComponent<GameSettings> ();
 	}
 

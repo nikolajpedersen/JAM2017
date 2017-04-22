@@ -8,17 +8,27 @@ public class GhostBrain : MonoBehaviour
 	public Helpers.Colors myColor;
 
 	public bool isAlive = true;
+	public float dyingSpeed = 0.1f;
+
+	private GameSettings gameSettings;
 
 
 	void Start ()
 	{
-		
+		try{
+		gameSettings = GameObject.Find ("Level").GetComponent<GameSettings> ();
+		}
+		catch{
+		}
 	}
 
 	void Update()
 	{
 		if (isAlive == false) {
-			KillGhost();
+			transform.localScale -= Vector3.one * dyingSpeed;
+			if (transform.localScale.x < 0.15f) {
+				KillGhost ();
+			}
 		}
 	}
 
@@ -29,6 +39,8 @@ public class GhostBrain : MonoBehaviour
 		if (who.tag == "Enemy") {
 			if (myColor != pillar.myColor) {
 				isAlive = false;
+			} else {
+				pillar.isAlive = false;
 			}
 		}
 			
@@ -37,6 +49,7 @@ public class GhostBrain : MonoBehaviour
 	void KillGhost ()
 	{
 		//do here animations, sounds etc; and then ->
+		gameSettings.totalGhosts--;
 		this.gameObject.SetActive(false);
 	}
 

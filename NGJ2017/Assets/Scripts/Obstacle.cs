@@ -6,6 +6,11 @@ public class Obstacle : MonoBehaviour {
 
 	public Helpers.Colors myColor;
 
+	public bool isAlive = true;
+
+	//private Vector3 currentScale;
+	public float dyingSpeed = 0.1f;
+
 	void Start()
 	{
 		ColorME (myColor);
@@ -29,6 +34,15 @@ public class Obstacle : MonoBehaviour {
 			break;
 		}
 	}
-	
 
+	void FixedUpdate()
+	{
+		if (!isAlive) {
+			transform.localScale -= Vector3.one * dyingSpeed;
+		
+		}
+		if (transform.localScale.x < 0.15f) {
+			gameObject.SetActive (false);
+		}
+	}
 }
