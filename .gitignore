@@ -1,7 +1,7 @@
- Temp/
- obj/
- Build
- Library/
+ NGJ2017/Temp/
+ NGJ2017/obj/
+ NGJ2017/Build
+ NGJ2017/Library/
 
      # ============ #
      # OS generated #
