@@ -13,6 +13,7 @@ public class AnimateArrow : MonoBehaviour {
 	{
 		x = transform.position.x;
 		y = transform.position.y;
+		///
 	}
 
 	// Use this for initialization

@@ -16,6 +16,6 @@ public class StartButton : MonoBehaviour {
 
 	void TaskOnClick()
 	{
-		SceneManager.LoadScene ("TestSceneCristian");
+		SceneManager.LoadScene ("Tutorial");
 	}
 }

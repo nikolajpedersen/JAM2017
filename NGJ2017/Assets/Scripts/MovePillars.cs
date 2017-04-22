@@ -12,8 +12,9 @@ public class MovePillars : MonoBehaviour {
 	public float moveSpeedContinuous = 0.1f;
 	public float _time = 0f;
 
-
+	private GameSettings gameSettings;
 	private Helpers.GameMode gameMode;
+	private bool isPaused;
 
 	private static Vector3 direction = new Vector3(0f,-1f,0f);
 	private bool hasTarget = false;
@@ -22,53 +23,60 @@ public class MovePillars : MonoBehaviour {
 
 	void Awake()
 	{
-		gameMode = this.GetComponent<GameSettings> ().gameMode;
+		gameSettings = this.GetComponent<GameSettings> ();
 		moveTo = transform.position;
 	}
 
+	void Update()
+	{
+		isPaused = gameSettings.isPaused;
+		gameMode = gameSettings.gameMode;
+	}
 
 	void FixedUpdate ()
 	{
-		if (gameMode == Helpers.GameMode.tetris) {
-			_time = _time + Time.deltaTime;
-			if (_time > moveSpeedTetrisTick) {
-				gameObject.transform.position = gameObject.transform.position + direction;
-				_time = 0f;
+		if (!isPaused) {
+			if (gameMode == Helpers.GameMode.tetris) {
+				_time = _time + Time.deltaTime;
+				if (_time > moveSpeedTetrisTick) {
+					gameObject.transform.position = gameObject.transform.position + direction;
+					_time = 0f;
+				}
 			}
-		}
-		if (gameMode == Helpers.GameMode.fluid) {
-			if (!hasTarget) {
-				moveTo = transform.position + direction;
-				hasTarget = true;
+			if (gameMode == Helpers.GameMode.fluid) {
+				if (!hasTarget) {
+					moveTo = transform.position + direction;
+					hasTarget = true;
+				}
+				_time = _time + Time.deltaTime;
+				if (_time < moveSpeedFluidTick) {
+					float step = moveSpeedFluid * Time.deltaTime;
+					transform.position = Vector3.Lerp (transform.position, moveTo, step);
+				} else {
+					moveTo = moveTo + direction;
+					_time = 0f;
+				}
 			}
-			_time = _time + Time.deltaTime;
-			if (_time < moveSpeedFluidTick) {
-				float step = moveSpeedFluid * Time.deltaTime;
-				transform.position = Vector3.Lerp (transform.position, moveTo, step);
-			} else {
-				moveTo = moveTo + direction;
-				_time = 0f;
+			if (gameMode == Helpers.GameMode.robotic) {
+				if (!hasTarget) {
+					moveTo = transform.position + direction;
+					hasTarget = true;
+				}
+				_time = _time + Time.deltaTime;
+				if (_time < moveSpeedFluidTick) {
+					float step = moveSpeedRobotic * Time.deltaTime;
+					transform.position = Vector3.MoveTowards (transform.position, moveTo, step);
+				} else {
+					moveTo = moveTo + direction;
+					_time = 0f;
+				}
 			}
-		}
-		if (gameMode == Helpers.GameMode.robotic) {
-			if (!hasTarget) {
-				moveTo = transform.position + direction;
-				hasTarget = true;
-			}
-			_time = _time + Time.deltaTime;
-			if (_time < moveSpeedFluidTick) {
-				float step = moveSpeedRobotic * Time.deltaTime;
-				transform.position = Vector3.MoveTowards (transform.position, moveTo, step);
-			} else {
-				moveTo = moveTo + direction;
-				_time = 0f;
-			}
-		}
 
-		if (gameMode == Helpers.GameMode.continous) {
-			Vector3 position = this.transform.position;
-			position.y = position.y - moveSpeedContinuous;
-			this.transform.position = position;
+			if (gameMode == Helpers.GameMode.continous) {
+				Vector3 position = this.transform.position;
+				position.y = position.y - moveSpeedContinuous;
+				this.transform.position = position;
+			}
 		}
 	}
 }
