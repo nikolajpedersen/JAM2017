@@ -41,7 +41,7 @@ public class Dial : MonoBehaviour {
 	void Update () {
 
 		float posY = 0;
-		float posX = 0;
+		//float posX = 0;
 
 		string clickStatus = "";
 
@@ -53,7 +53,7 @@ public class Dial : MonoBehaviour {
 
 			Debug.Log("touched");
 			Touch touchObject = Input.GetTouch(0);
-			posX = touchObject.position.x;
+			//posX = touchObject.position.x;
 			posY = touchObject.position.y;
 
 			if(touchObject.phase == TouchPhase.Began) {
@@ -64,14 +64,14 @@ public class Dial : MonoBehaviour {
 				clickStatus = "moved";
 			}
 		} else if (Input.GetMouseButtonDown(0)) {
-			posX = Input.mousePosition.x;
+			//posX = Input.mousePosition.x;
 			posY= Input.mousePosition.y;
 			isMouseDragging = true;
 			clickStatus = "began";
 			// stop swipe if going on
 			isSwipeSpin = false;
 		} else if (Input.GetMouseButtonUp(0)) {
-			posX = Input.mousePosition.x;
+			//posX = Input.mousePosition.x;
 			posY= Input.mousePosition.y;
 
 			clickStatus = "ended";
@@ -79,7 +79,7 @@ public class Dial : MonoBehaviour {
 			// stop swipe if going on
 			isSwipeSpin = false;
 		} else if (isMouseDragging == true) {
-			posX = Input.mousePosition.x;
+			//posX = Input.mousePosition.x;
 			posY= Input.mousePosition.y;
 
 			clickStatus = "moved";
@@ -155,7 +155,7 @@ public class Dial : MonoBehaviour {
 			//Debug.Log(Mathf.Abs(swipeDetectedValue));
 
 			if (Mathf.Abs(swipeDetectedValue) > swipeDetectThreshold) {
-				Debug.Log("swipe detected");
+				//Debug.Log("swipe detected");
 				float spinForce = swipeSpinForce * swipeDetectedValue * 180;
 				// enable swipe
 				isSwipeSpin = true;
@@ -167,12 +167,12 @@ public class Dial : MonoBehaviour {
 		} else {
 			// see if we are spinning
 			if (isSwipeSpin) {
-				Debug.Log(currentSwipeSpinForce);
+				//Debug.Log(currentSwipeSpinForce);
 
 				if (Mathf.Abs(currentSwipeSpinForce) < 0.001f) {
 					currentSwipeSpinForce = 0;
 					isSwipeSpin = false;
-					Debug.Log("end spin");
+					//Debug.Log("end spin");
 					return;
 				}
 
