@@ -12,9 +12,15 @@ public class GhostBrain : MonoBehaviour
 
 	private GameSettings gameSettings;
 
+	private AudioSource beep;
+	private AudioSource flopp;
+
 
 	void Start ()
 	{
+		beep = GameObject.Find ("beep").GetComponent<AudioSource>();
+		flopp = GameObject.Find ("flopp").GetComponent<AudioSource>();
+
 		try{
 		gameSettings = GameObject.Find ("Level").GetComponent<GameSettings> ();
 		}
@@ -38,10 +44,12 @@ public class GhostBrain : MonoBehaviour
 		Obstacle pillar = who.GetComponent<Obstacle> ();
 		if (who.tag == "Enemy") {
 			if (myColor != pillar.myColor) {
+				beep.Play ();
 				gameSettings.score--;
 				pillar.isAlive = false;
 
 			} else {
+				flopp.Play ();
 				gameSettings.score++;
 				pillar.isAlive = false;
 			}
