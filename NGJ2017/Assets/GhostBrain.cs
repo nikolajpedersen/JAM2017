@@ -38,8 +38,11 @@ public class GhostBrain : MonoBehaviour
 		Obstacle pillar = who.GetComponent<Obstacle> ();
 		if (who.tag == "Enemy") {
 			if (myColor != pillar.myColor) {
-				isAlive = false;
+				gameSettings.score--;
+				pillar.isAlive = false;
+
 			} else {
+				gameSettings.score++;
 				pillar.isAlive = false;
 			}
 		}

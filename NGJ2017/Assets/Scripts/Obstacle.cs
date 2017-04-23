@@ -20,8 +20,8 @@ public class Obstacle : MonoBehaviour {
 	void ColorME(Helpers.Colors _color)
 	{
 		switch (_color) {
-		case Helpers.Colors.green:
-			this.GetComponent<Renderer> ().material.color = Color.green;
+		case Helpers.Colors.purple:
+			this.GetComponent<Renderer> ().material.color = Color.magenta;
 			break;
 		case Helpers.Colors.blue:
 			this.GetComponent<Renderer> ().material.color = Color.blue;
