@@ -31,15 +31,46 @@ public class Dial : MonoBehaviour {
 	float floatCacheXPos1 = 9999999999;
 	float floatCacheXPos2 = 9999999999;
 
+
+	// sound tracking
+	float lastDialTickRotation = 9999;
+	float tickThreshold = 0.05f;
+	float lastTimePlayed = 0;
+	float playThresholdSeconds = 0.1f;
+	float ownTime = 0;
+
+	AudioSource tick;
+
+
 	// Use this for initialization
 	void Start () {
 		//Input.multiTouchEnabled = true; //enabled Multitouch
+		tick = GetComponent<AudioSource>();
 	}
 
 
 	// Update is called once per frame
 	void Update () {
+		ownTime += Time.deltaTime;
 
+		// sound
+		// store last rotation
+		float current_rotation = transform.rotation.z;
+
+		if (lastDialTickRotation != 9999) {
+			float difference = Mathf.Abs(lastDialTickRotation) - (Mathf.Abs(current_rotation));
+
+
+			if (Mathf.Abs(difference) > tickThreshold && (ownTime-lastTimePlayed) > playThresholdSeconds ) {
+				lastDialTickRotation =  Mathf.Abs(current_rotation);
+				lastTimePlayed = ownTime;
+				tick.Play();
+			}
+		} else {
+			lastDialTickRotation = current_rotation;
+		}
+
+		// rotation
 		float posY = 0;
 		//float posX = 0;
 
