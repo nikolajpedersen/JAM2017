@@ -7,6 +7,7 @@ public class PopUpRetryMenu : MonoBehaviour {
 
 	public GameObject mainMenuBtn;
 	public GameObject retryBtn;
+	public GameObject skipBtn;
 
 	GameSettings gameSettings;
 
@@ -14,14 +15,23 @@ public class PopUpRetryMenu : MonoBehaviour {
 	{
 		mainMenuBtn = transform.FindChild ("MainMenu").gameObject;
 		retryBtn = transform.FindChild ("Retry").gameObject;
+
+		try {
+			skipBtn = transform.FindChild ("Move on").gameObject;
+		} catch {}
+
 		gameSettings = GameObject.Find ("Level").GetComponent<GameSettings> ();
 	}
 
 	void Update()
 	{
-		if (gameSettings.levelOver) {
-			mainMenuBtn.SetActive (true);
-			retryBtn.SetActive (true);
-		}
+		try {
+			if (gameSettings.levelOver) {
+				mainMenuBtn.SetActive (true);
+				retryBtn.SetActive (true);
+				skipBtn.SetActive(true);
+			}
+		} catch {
+		}  
 	}
 }

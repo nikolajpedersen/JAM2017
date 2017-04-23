@@ -10,6 +10,7 @@ public class GotItButton : MonoBehaviour {
 	private Color _color;
 
 	private GameObject arrow;
+	private GameObject skip;
 
 	void Start()
 	{
@@ -17,6 +18,7 @@ public class GotItButton : MonoBehaviour {
 		btn = this.GetComponent<Button>();
 		btn.onClick.AddListener(TaskOnClick);
 		level = GameObject.Find ("Level");
+		skip = GameObject.Find ("Move on");
 	}
 
 	void TaskOnClick()
@@ -24,6 +26,7 @@ public class GotItButton : MonoBehaviour {
 		level.GetComponent<GameSettings> ().isPaused = false;
 		transform.parent.gameObject.SetActive (false);
 		arrow.SetActive (false);
+		skip.SetActive(false);
 	}
 
 	void Update()
