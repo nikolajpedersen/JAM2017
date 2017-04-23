@@ -18,8 +18,10 @@ public class GhostBrain : MonoBehaviour
 
 	void Start ()
 	{
-		beep = GameObject.Find ("beep").GetComponent<AudioSource>();
-		flopp = GameObject.Find ("flopp").GetComponent<AudioSource>();
+		try {
+			beep = GameObject.Find ("beep").GetComponent<AudioSource>();
+			flopp = GameObject.Find ("flopp").GetComponent<AudioSource>();
+		} catch {}
 
 		try{
 		gameSettings = GameObject.Find ("Level").GetComponent<GameSettings> ();
