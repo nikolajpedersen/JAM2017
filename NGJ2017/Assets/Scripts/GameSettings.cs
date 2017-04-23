@@ -8,6 +8,7 @@ public class GameSettings: MonoBehaviour {
 	public bool isPaused = false;
 	public bool levelOver = false;
 	public int totalGhosts;
+	public int score = 0;
 
 	GameObject [] ghosts;
 
